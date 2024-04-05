@@ -11,7 +11,7 @@
 	<link rel="icon" href="../assets/graphics/app-icon-transparent.png">
 
 	<link rel="stylesheet" href="../assets/css/style.css">
-	<script type="text/javascript" src="user.js"></script>
+	<script type="text/javascript" src="../user.js"></script>
 
 	<?php
 	require 'class.parkReg.php';

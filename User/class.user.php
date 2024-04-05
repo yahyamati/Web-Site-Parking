@@ -65,7 +65,7 @@ include "../Config/db_config.php";
 
 			if ($count_row == 1) {
 	            // this login var will use for the session thing
-	            $_SESSION['login'] = true;
+	            $_SESSION['Email'] = true;
 	            $_SESSION['uemail'] = $user_data['uemail'];
 	            return true;
 	        }

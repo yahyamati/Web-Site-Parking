@@ -90,9 +90,8 @@ table.gridtable td{
     cursor: pointer; /* Pointer/hand icon */
     float: left; /* Float the buttons side by side */
     display: table;
-    border-radius: 20px;
-    background-color: #d35400;
-    border: 1px solid #d35400;
+    border-radius: 10px;
+    background-color: #b14600;
     border: none;
     color: #FFFFFF;
     text-align: center;
@@ -101,13 +100,12 @@ table.gridtable td{
     padding-top : 5px;
     padding-bottom: 5px;
     width: 150px;
-    height:50px;
-    transition: all 0.2s;
+    height:35px;
+    transition: all 0.5s;
     cursor: pointer;
     margin: 10px;
     display:block;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
   }
   
   .btn-group button:not(:last-child) {
@@ -123,14 +121,11 @@ table.gridtable td{
   
   /* Add a background color on hover */
   .btn-group button:hover {
-    background-color: #b14600;
-  
+    background-color: #d35400;
+    border: 1px solid #b14600;
     color: #fff;
   }
-.btn-group .btn-register{
-  width: 250px;
 
-}
 .btn-update {
   background-color: #004A7F;
   -webkit-border-radius: 10px;
@@ -149,7 +144,25 @@ table.gridtable td{
   -o-animation: glowing 1500ms infinite;
   animation: glowing 1500ms infinite;
 }
+@-webkit-keyframes glowing {
+  0% { background-color: #d35400; -webkit-box-shadow: 0 0 3px #B20000; }
+  50% { background-color: #d35400; -webkit-box-shadow: 0 0 40px #d35400; }
+  100% { background-color: #d35400; -webkit-box-shadow: 0 0 3px #B20000; }
+}
 
+
+
+@-o-keyframes glowing {
+  0% { background-color: #d35400; box-shadow: 0 0 3px #B20000; }
+  50% { background-color: #d35400; box-shadow: 0 0 40px #d35400; }
+  100% { background-color: #d35400; box-shadow: 0 0 3px #B20000; }
+}
+
+@keyframes glowing {
+  0% { background-color: #d35400; box-shadow: 0 0 3px #B20000; }
+  50% { background-color: #d35400; box-shadow: 0 0 40px #d35400; }
+  100% { background-color: #d35400; box-shadow: 0 0 3px #B20000; }
+}
   .limiter {
     max-width: 38em;
     padding: 1em 3em 2em 3em;

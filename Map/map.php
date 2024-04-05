@@ -2,12 +2,12 @@
 <html>
   <head>
   <title>Find Car Parks</title>
-  <noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
-		<link rel="icon" href="../assets/graphics/app-icon-transparent.png">
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="icon" href="assets/img/app-icon-transparent.png">
   <meta name="viewport" content="initial-scale=1.0, width=device-width" />
   <meta http-equiv="Content-Language" content="en">
-      <link rel="stylesheet" href="../assets/css/style.css">
-      <link rel="stylesheet" href="../assets/css/overlay.css">
+      <link rel="stylesheet" href="assets/css/style.css">
+      <link rel="stylesheet" href="assets/css/overlay.css">
   <script src="http://js.api.here.com/v3/3.0/mapsjs-core.js"
   type="text/javascript" charset="utf-8"></script>
   <script src="http://js.api.here.com/v3/3.0/mapsjs-service.js"
@@ -19,18 +19,15 @@
     
     $park = new CarPark();
     $uemail = $_SESSION['uemail'];
-    
+
     echo "$uemail";
     if ( $_SERVER[ 'REQUEST_METHOD' ] === 'GET' ) {
       if ( isset( $_REQUEST[ 'submit' ] ) ) {
         extract( $_REQUEST );
         if($booked == "yes"){
           $booking = $park->book_carPark($id,$uemail);
-          header('Location: ../Park/booking_details.php');
-          
         }else{
           $booking = $park->navigate_carPark($id,$uemail);;
-          header('Location: ../Interface/home_afterlogin .php');
         }
         
         
@@ -40,8 +37,6 @@
         }else{
           echo "<script type='text/javascript'>alert('Booking Error. Try Again or Just Navigate.');</script>";
         }
-
-
          
       }
     }
@@ -84,7 +79,7 @@
 
   
     
-    //$park->cancel_booking();
+     $park->cancel_booking();
   
       
       

@@ -12,9 +12,7 @@ include "../Config/db_config.php";
 		public $cpid;
 
 		public function __construct(){
-
-			if ($this->db == null){
-			$this->db = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);}
+			$this->db = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 
 			if(mysqli_connect_errno()) {
 				echo "Error: Could not connect to database.";
@@ -78,40 +76,12 @@ include "../Config/db_config.php";
 			$this->cpbooked=$user_databooked['cpbooked'];
 			
 
-            //echo $this->cplat;
-            //echo $this->cplng;
-            //echo "<script type='text/javascript'>alert('$this->$cplat');</script>";
-            
-            /*if ($count_row == 1) {
-	            // this login var will use for the session thing
-	            $_SESSION['login'] = true;
-	            $_SESSION['uemail'] = $user_data['uemail'];
-	            return true;
-	        }
-	        else{
-			    return false;
-            }*/
             
     	}
+		
+		
 
-    	/*** for showing the username or fullname ***/
-    	/*public function get_fullname($uemail){
-    		$sql3="SELECT ufname FROM users WHERE uemail = '$uemail'";
-	        $result = mysqli_query($this->db,$sql3);
-	        $user_data = mysqli_fetch_array($result);
-	        return $user_data['ufname'];
-    	}
-
-    	/*** starting the session ***/
-	    /*public function get_session(){
-	        return $_SESSION['login'];
-	    }
-
-	    public function user_logout() {
-	        $_SESSION['login'] = FALSE;
-	        session_destroy();
-        }*/
-
+    	
 	
 		public function book_carPark($id,$uemail){
 			//$message = $lat;
@@ -120,29 +90,15 @@ include "../Config/db_config.php";
 				$sql2="UPDATE carparks SET cpavailable=cpavailable-1,cpbooked=cpbooked+1 WHERE cpid='$id'";
 				$result2 = mysqli_query($this->db,$sql2) or die(mysqli_connect_errno()."Data cannot be inserted");
 
+				$this->cpid = $id;
 				$booked = "yes";
 
-			
+
 				$this-> add_navigations($id,$uemail,$booked);
 				//echo mysqli_errno($this->db);
 				return true;
 				
-			//$sql2="SELECT cpname from carparks WHERE cpid='$id'";
-
-			//checking if the username is available in the table
-        	//$result = mysqli_query($this->db,$sql2);
-        	//$user_data = mysqli_fetch_array($result);
-        	//$count_row = $result->num_rows;
-			//echo $count_row;
-	        //if ($count_row == 1) {
-	            // this login var will use for the session thing
-	            //echo "<script type='text/javascript'>alert('yeahhhhs');</script>";
-	            //return true;
-
-			//}else{
-				
-			//	echo mysqli_errno($this->db);
-			///}
+			
 
 		}
 
@@ -185,7 +141,7 @@ include "../Config/db_config.php";
 
 
 		public function add_navigations($id,$uemail,$booked){
-				$cancelled = "No";
+			$cancelled = "No";
 			
 				$sql3="SELECT cpname FROM carparks WHERE cpid='$id'";
 				$result3 = mysqli_query($this->db,$sql3);
@@ -197,44 +153,32 @@ include "../Config/db_config.php";
 				$row = $result4->fetch_assoc();
 				$user_name = $row["ufname"];
 
-			
-
 				
-				date_default_timezone_set('Asia/Colombo');
+				
 
 				$date_time = date('Y-m-d H:i:s');
 
 				$sql5 = "INSERT INTO navigations (ufname, uemail, date_time, cpname, cpid, booked, cancelled) VALUES ('$user_name', '$uemail', '$date_time', '$park_name', '$id', '$booked', '$cancelled')";
 				$result5 = mysqli_query($this->db,$sql5);
-			
-				$sql6="SELECT id FROM navigations WHERE ufname='$user_name'";
-				$result6=$this->db->query($sql6);
-				//$rowCount=$result6->num_rows;
-				while ($row = $result6->fetch_assoc()){
-					$id = $row["id"];
-				}
-			
-				$_SESSION['id'] = $id;
 
 
 
 		}
 
-		public function cancel_booking($id){
-				//echo "<script type='text/javascript'>alert('Doon');</script>";
+		public function cancel_booking(){
+				echo "<script type='text/javascript'>alert('Doon');</script>";
 			
-			$sql6="SELECT cpid FROM navigations WHERE id='$id'";
+			$sql6="SELECT cpid FROM navigations WHERE id='id'";
 				$result6 = mysqli_query($this->db,$sql6);
 				$row = $result6->fetch_assoc();
 				$park_id = $row["cpid"];
 
-				$sql7="UPDATE carparks SET cpavailable=cpavailable+1,cpbooked=cpbooked-1 WHERE cpid='$park_id'";
+				$sql7="UPDATE carparks SET cpavailable=cpavailable+1,cpbooked=cpbooked-1 WHERE cpid='par_id'";
 				$result7 = mysqli_query($this->db,$sql7);
-
-				$sql8="UPDATE navigations SET booked = 'No',Cancelled = 'Yes' WHERE id='$id'";
-				$result8 = mysqli_query($this->db,$sql8);
 				return true;
 		}
+
+		
 	}
 
 ?>

@@ -75,7 +75,7 @@ if(isset($_POST['submit'])){
       <textarea name="message" placeholder="Type your message here...." type="message" tabindex="5" required></textarea>
     </fieldset>
     <fieldset>
-      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending" >Submit</button>
       <label for="#contact-submit"></label>
     </fieldset>
     <fieldset>

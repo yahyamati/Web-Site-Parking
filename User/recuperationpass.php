@@ -21,7 +21,7 @@
 			if ( $Email ) {
 				// Registration Success
 				
-					header( "location:OTP.php" );;
+					//header( "location:registration.php" );;
 				
 			
 			} else {
@@ -42,10 +42,6 @@
 <body id="login">
 	<script type="text/javascript" language="javascript">
 		function submitlogin() {
-			
-
-			
-	
 
 
 			var form = document.login;
@@ -79,12 +75,7 @@
 						<label for="btn_submit"></label>
 					</div>
 
-
-                   
-                 <a href="login.php" >Back</a>
-                
-
-					<!-- <div class="text-center p-t-115">s
+					<!-- <div class="text-center p-t-115">
 						<span class="txt1">
 							Don’t have an account?
 						</span>

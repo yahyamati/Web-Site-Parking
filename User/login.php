@@ -22,7 +22,7 @@
 				if($uemail =="admin@gmail.com" ){
 					header( "location:../Interface/messages.php" );;
 				 } else {
-				header( "location:../RecycleBin/parkme/Interface/home_afterlogin.php#one" );;
+				header( "location:../Interface/home_afterlogin.php#one" );;
 				 }
 			
 			} else {
